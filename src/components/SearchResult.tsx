@@ -1,16 +1,29 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { VenueRating } from "@/pages/api/venues"
 
-export default function SearchResult() {
+type SearchResultProps = {
+    name: string
+    description: string
+    rating: VenueRating
+}
+
+const SearchResult: React.FC<SearchResultProps> = ({ name, description, rating }) => {
     return (
         <>
             <div className="flex justify-between">
-                <div>
-                    <div className="font-semibold text-xl">Brewdog</div>
-                    <div className="text-md">⭐️ ⭐️ ⭐️ ⭐️ ⭐️</div>
+                <div className="w-full">
+                    <div className="font-semibold text-blue-950">{name}</div>
+                    <div className="text-xs text-slate-500">{description}</div>
                 </div>
-                <div className="w-8 flex justify-center">
-                    <FontAwesomeIcon icon={faCircleArrowRight} />
+
+                <div className="flex flex-col w-10 justify-center items-center">
+                    <div>⭐️</div>
+                    <div className="text-sm font-bold text-blue-950">{rating?.value}</div>
+                </div>
+
+                <div className="flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
                 </div>
             </div>
             <div className="flex justify-center">
@@ -19,3 +32,4 @@ export default function SearchResult() {
         </>
   )
 }
+export default SearchResult
