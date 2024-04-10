@@ -18,7 +18,7 @@ const RatingBar = ({ ratingCategory, ratingValue }: RatingBarProps) => {
 
 const VenueDetails: React.FC<VenueDetailsProps> = ({ venue, onClose }) => {
     return (
-        <div className="absolute top-3 left-3 w-[300px] bg-white z-10 rounded-md shadow-md">
+        <div className="absolute top-3 left-3 w-[300px] bg-white z-10 rounded-md shadow-md" data-cy="venue-details">
             <div className="h-44 bg-cover bg-center rounded-t-md relative" style={{ backgroundImage: `url('${venue.thumbnailUri}')` }} data-cy="image">
                 <div className="absolute top-1 right-1 p-1 bg-white rounded-full cursor-pointer" onClick={onClose} data-cy="close-link">
                     <svg className="w-7 h-7 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
