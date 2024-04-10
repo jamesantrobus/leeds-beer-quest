@@ -1,14 +1,15 @@
-import { VenueRating } from "@/pages/api/venues"
+import { Venue, VenueRating } from "@/pages/api/venues"
 
 type SearchResultProps = {
     name: string
     description: string
     rating: VenueRating
+    onSelect: () => void
 }
 
-const SearchResult: React.FC<SearchResultProps> = ({ name, description, rating }) => {
+const SearchResult: React.FC<SearchResultProps> = ({ name, description, rating, onSelect }) => {
     return (
-        <>
+        <div className="cursor-pointer border-b pt-2 pb-2" onClick={onSelect}>
             <div className="flex justify-between">
                 <div className="w-full">
                     <div className="font-semibold text-blue-950">{name}</div>
@@ -26,10 +27,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ name, description, rating }
                     </svg>
                 </div>
             </div>
-            <div className="flex justify-center">
-                <div className="w-9/12 h-px bg-gray-200"></div>
-            </div>
-        </>
+        </div>
   )
 }
 export default SearchResult

@@ -7,6 +7,7 @@ import { Venue } from "@/pages/api/venues"
 
 export default function Home() {
   const [venues, setVenues] = useState<Venue[]>([]);
+  const [selectedVenue, setSelectedVenue] = useState<Venue>()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,15 +25,24 @@ export default function Home() {
         <div className="m-3 text-center text-xl font-bold">
           Beer Quest
         </div>
-        <div className="pl-3 pr-3 space-y-3 overflow-auto">
+        <div className="pl-3 pr-3 overflow-auto">
           {venues.map((venue, index) => (
-            <SearchResult key={index} name={venue.name} description={venue.description} rating={venue.rating} />
+            <SearchResult key={index} name={venue.name} description={venue.description} rating={venue.rating} onSelect={() => setSelectedVenue(venue)} />
           ))}
         </div>
       </div>
 
       <div className="col-span-7 relative">
-        <BeerMap venues={venues} />
+        
+        {selectedVenue && 
+          <div className="absolute top-5 left-5 w-[250px] h-28 bg-white z-10 rounded-md shadow-md">
+            { selectedVenue.name }
+            <div onClick={() => setSelectedVenue(undefined)}>
+              CLOSE PANEL
+            </div>
+          </div>}
+
+        <BeerMap venues={venues} selectedVenue={selectedVenue} onSelect={(venue) => setSelectedVenue(venue)} />
       </div>
 
     </main>
