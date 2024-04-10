@@ -16,13 +16,19 @@ export type VenueRating = {
   value: number
 }
 
+export type VenueContact = {
+  phone: string
+  twitterUri: string
+}
+
 export type Venue = {
   name: string
   category: string
   description: string
-  thumbnail: string
+  thumbnailUri: string
   location: VenueLocation
   rating: VenueRating
+  contact: VenueContact
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
@@ -38,7 +44,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
       name: row.name,
       category: row.category,
       description: row.excerpt,
-      thumbnail: row.thumbnail,
+      thumbnailUri: row.thumbnail,
       location: {
         address: row.address,
         latitude: Number(row.lat),
@@ -49,6 +55,10 @@ export default async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
         atmosphere: Number(row.stars_atmosphere),
         amenities: Number(row.stars_amenities),
         value: Number(row.stars_value),
+      },
+      contact: {
+        phone: row.phone,
+        twitterUri: row.twitter ? `https://twitter.com/${row.twitter}` : ''
       }
   }) as Venue)
 
