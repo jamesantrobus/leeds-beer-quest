@@ -9,16 +9,16 @@ type SearchResultProps = {
 
 const SearchResult: React.FC<SearchResultProps> = ({ name, description, rating, onSelect }) => {
     return (
-        <div className="cursor-pointer border-b pt-2 pb-2" onClick={onSelect}>
+        <div className="cursor-pointer border-b pt-2 pb-2" data-cy="search-result" onClick={onSelect}>
             <div className="flex justify-between">
                 <div className="w-full">
-                    <div className="font-semibold text-blue-950">{name}</div>
-                    <div className="text-xs text-slate-500">{description}</div>
+                    <div className="font-semibold text-blue-950" data-cy="name">{name}</div>
+                    <div className="text-xs text-slate-500" data-cy="description">{description}</div>
                 </div>
 
                 <div className="flex flex-col w-10 justify-center items-center">
                     <div>⭐️</div>
-                    <div className="text-sm font-bold text-blue-950">{rating?.value}</div>
+                    <div className="text-sm font-bold text-blue-950" data-cy="star-rating">{rating?.value}</div>
                 </div>
 
                 <div className="flex justify-center items-center">
