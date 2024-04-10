@@ -1,13 +1,13 @@
 import { Venue, VenueRating } from "@/pages/api/venues"
 
-type SearchResultProps = {
+type SearchResultItemProps = {
     name: string
     description: string
     rating: VenueRating
     onSelect: () => void
 }
 
-const SearchResult: React.FC<SearchResultProps> = ({ name, description, rating, onSelect }) => {
+const SearchResult: React.FC<SearchResultItemProps> = ({ name, description, rating, onSelect }) => {
     return (
         <div className="cursor-pointer border-b pt-2 pb-2" data-cy="search-result" onClick={onSelect}>
             <div className="flex justify-between">

@@ -1,6 +1,6 @@
 "use client"
 
-import SearchResult from "@/components/SearchResult"
+import SearchResultList from "@/components/SearchResultList"
 import BeerMap from "@/components/BeerMap"
 import { useEffect, useState } from "react";
 import { Venue } from "@/pages/api/venues"
@@ -26,11 +26,7 @@ export default function Home() {
         <h1 className="m-3 text-center text-xl font-bold">
           Beer Quest
         </h1>
-        <div className="pl-3 pr-3 overflow-auto">
-          {venues.map((venue, index) => (
-            <SearchResult key={index} name={venue.name} description={venue.description} rating={venue.rating} onSelect={() => setSelectedVenue(venue)} />
-          ))}
-        </div>
+        <SearchResultList venues={venues} onSelect={(venue) => setSelectedVenue(venue)} />
       </div>
 
       <div className="col-span-7 relative">
