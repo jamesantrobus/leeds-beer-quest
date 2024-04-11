@@ -36,15 +36,21 @@ describe('<SearchResultList />', () => {
 
     cy.mount(<SearchResultList venues={venues} onSelect={() => {}} />)
 
+    cy.get('[data-cy="no-results"]').should('not.exist')
     cy.get('[data-cy="search-result"]').should('have.length', 3)
   })
 
-  it('renders an empty list when there are no venues', () => {
+  it('renders an empty list with message when there are no venues', () => {
     const venues: Venue[] = []
 
     cy.mount(<SearchResultList venues={venues} onSelect={() => {}} />)
 
     cy.get('[data-cy="search-result"]').should('have.length', 0)
+
+    cy.get('[data-cy="no-results"]')
+      .should('be.visible')
+      .should('have.text', 'No venues match this search')
+
   })
 
   it('allows a venue to be selected', () => {

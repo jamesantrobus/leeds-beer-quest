@@ -8,7 +8,7 @@ import VenueDetails from "@/components/VenueDetails";
 import SearchFilters, { SearchParams } from "@/components/SearchFilters";
 
 export default function Home() {
-  const [venues, setVenues] = useState<Venue[]>([]);
+  const [venues, setVenues] = useState<Venue[]>();
   const [selectedVenue, setSelectedVenue] = useState<Venue>()
 
   const fetchData = async (params: SearchParams) => {

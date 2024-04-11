@@ -6,7 +6,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { Venue } from "@/pages/api/venues"
 
 type BeerMapProps = {
-  venues: Venue[]
+  venues?: Venue[]
   selectedVenue?: Venue
   onSelect: (venue: Venue) => void
 }
