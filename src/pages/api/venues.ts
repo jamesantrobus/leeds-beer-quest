@@ -31,7 +31,7 @@ export type Venue = {
   contact: VenueContact
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
   // parse the CSV of Leeds Beer Quest data
   const filePath = path.join(process.cwd(), 'data', 'venues.csv')
   const csvData = fs.readFileSync(filePath, 'utf8')
@@ -67,3 +67,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
 
   res.status(200).json(venues)
 }
+
+export default handler

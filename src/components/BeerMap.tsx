@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Map, { Marker } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Venue } from "@/pages/api/venues"
+import Image from "next/image"
 
 type BeerMapProps = {
   venues?: Venue[]
@@ -11,9 +12,10 @@ type BeerMapProps = {
   onSelect: (venue: Venue) => void
 }
 
+const defaultState = { longitude: -1.5448842044972366, latitude: 53.797900782787224, zoom: 14 };
+
 const BeerMap: React.FC<BeerMapProps> = ({ venues = [], selectedVenue, onSelect }) => {
   // setup the default state to be Leeds City Centre
-  const defaultState = { longitude: -1.5448842044972366, latitude: 53.797900782787224, zoom: 14 };
   const [viewState, setViewState] = useState(defaultState);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const BeerMap: React.FC<BeerMapProps> = ({ venues = [], selectedVenue, onSelect 
     >
       {venues.map((venue, index) => (
         <Marker key={index} longitude={venue.location.longitude} latitude={venue.location.latitude} anchor="bottom" onClick={() => onSelect(venue)}>
-          <img data-cy={`map-marker-${index}`} className={`w-10 h-10 ${(!selectedVenue || selectedVenue.name === venue.name) ? 'opacity-100' : 'opacity-65'}`} src="./map-marker.png" />
+          <Image data-cy={`map-marker-${index}`} className={`w-10 h-10 ${(!selectedVenue || selectedVenue.name === venue.name) ? 'opacity-100' : 'opacity-65'}`} src="./map-marker.png" alt={`Map marker for ${venue.name}`} />
         </Marker>
       ))}
     </Map>
