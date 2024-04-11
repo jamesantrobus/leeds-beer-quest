@@ -7,37 +7,31 @@ type NextApiResponseWithData<TData = any> = {
   _getData(): string
 } & NextApiResponse<TData>
 
-
-test('API returns all venues for default filters', async () => {
+const requestVenues = async (query: httpMocks.Query) => {
   const req: NextApiRequest = httpMocks.createRequest({
     method: 'GET',
     url: '/api/venues',
-    query: { category: '', minimumValueRating: 0 }
+    query
   })
   const res: NextApiResponseWithData<Venue[]> = httpMocks.createResponse()
-
   await handler(req, res)
+  return res
+}
 
-  expect(res.statusCode).toBe(200)
+test('API returns all venues for default filters', async () => {
+  const httpResponse = await requestVenues({ category: '', minimumValueRating: 0 })
+  expect(httpResponse.statusCode).toBe(200)
 
-  const responseBody = res._getData()
+  const responseBody = httpResponse._getData()
   const venues:Venue[] = JSON.parse(responseBody)
   expect(venues).toHaveLength(199)
 })
 
 test('API can filter by category and value rating', async () => {
-  const req: NextApiRequest = httpMocks.createRequest({
-    method: 'GET',
-    url: '/api/venues',
-    query: { category: 'Pub reviews', minimumValueRating: 4 }
-  })
-  const res: NextApiResponseWithData<Venue[]> = httpMocks.createResponse()
+  const httpResponse = await requestVenues({ category: 'Pub reviews', minimumValueRating: 4 })
+  expect(httpResponse.statusCode).toBe(200)
 
-  await handler(req, res)
-
-  expect(res.statusCode).toBe(200)
-
-  const responseBody = res._getData()
+  const responseBody = httpResponse._getData()
   const venues:Venue[] = JSON.parse(responseBody)
   expect(venues).toHaveLength(21)
 })
