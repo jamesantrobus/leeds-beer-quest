@@ -6,6 +6,7 @@ describe('Venues', () => {
     
     cy.visit('http://localhost:3000')
     cy.wait('@getVenuesRequest')
+    cy.wait('@getVenuesRequest')
   })
 
   it('Open and close a venue from the list view', () => {
@@ -34,5 +35,31 @@ describe('Venues', () => {
     // close the venue
     cy.get('[data-cy="close-link"]').click()
     cy.get('[data-cy="venue-details"]').should('not.exist')
+  })
+
+  it('Filtering updates list and map views', () => {
+    // check initial count
+    cy.get('[data-cy="search-result"]').should('have.length', 199)
+    cy.get('[aria-label="Map marker"]').should('have.length', 199)
+
+    // filter results to pubs
+    cy.get('[data-cy="category-filter"]').select('Pubs')
+    cy.wait('@getVenuesRequest').then(interception => {
+      const requestUrl = interception.request.url;
+      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumValueRating=0');
+    });
+
+    // further filter results to over 4 stars
+    cy.get('[data-cy="value-rating-filter"]').select('Over 4 stars')
+    cy.wait('@getVenuesRequest').then(interception => {
+      const requestUrl = interception.request.url;
+      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumValueRating=4');
+    });
+
+    // check the list view is updated
+    cy.get('[data-cy="search-result"]').should('have.length', 21)
+    
+    // check the map view is updated
+    cy.get('[aria-label="Map marker"]').should('have.length', 21)
   })
 })
