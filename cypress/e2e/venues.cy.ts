@@ -3,7 +3,7 @@
 describe('Venues', () => {
   beforeEach(() => {
     cy.intercept('GET', '/api/venues**').as('getVenuesRequest')
-    
+
     cy.visit('http://localhost:3000')
     cy.wait('@getVenuesRequest')
     cy.wait('@getVenuesRequest')
@@ -13,10 +13,8 @@ describe('Venues', () => {
     // click the first item in the list view
     cy.get('[data-cy="search-result"]').first().click()
 
-    // check the correct venue is displayed  
-    cy.get('[data-cy="venue-details"]')
-      .should('be.visible')
-      .should('contain.text', 'Tapped Brew Co.')
+    // check the correct venue is displayed
+    cy.get('[data-cy="venue-details"]').should('be.visible').should('contain.text', 'Tapped Brew Co.')
 
     // close the venue
     cy.get('[data-cy="close-link"]').click()
@@ -25,12 +23,10 @@ describe('Venues', () => {
 
   it('Open and close a venue from the map view', () => {
     // click a map marker
-    cy.get('[data-cy="map-marker-4"]').click({force: true})
+    cy.get('[data-cy="map-marker-4"]').click({ force: true })
 
     // check the correct details are shown
-    cy.get('[data-cy="venue-details"]')
-      .should('be.visible')
-      .should('contain.text', 'The Angel Inn')
+    cy.get('[data-cy="venue-details"]').should('be.visible').should('contain.text', 'The Angel Inn')
 
     // close the venue
     cy.get('[data-cy="close-link"]').click()
@@ -44,21 +40,21 @@ describe('Venues', () => {
 
     // filter results to pubs
     cy.get('[data-cy="category-filter"]').select('Pubs')
-    cy.wait('@getVenuesRequest').then(interception => {
-      const requestUrl = interception.request.url;
-      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumValueRating=0');
-    });
+    cy.wait('@getVenuesRequest').then((interception) => {
+      const requestUrl = interception.request.url
+      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumValueRating=0')
+    })
 
     // further filter results to over 4 stars
     cy.get('[data-cy="value-rating-filter"]').select('Over 4 stars')
-    cy.wait('@getVenuesRequest').then(interception => {
-      const requestUrl = interception.request.url;
-      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumValueRating=4');
-    });
+    cy.wait('@getVenuesRequest').then((interception) => {
+      const requestUrl = interception.request.url
+      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumValueRating=4')
+    })
 
     // check the list view is updated
     cy.get('[data-cy="search-result"]').should('have.length', 21)
-    
+
     // check the map view is updated
     cy.get('[aria-label="Map marker"]').should('have.length', 21)
   })

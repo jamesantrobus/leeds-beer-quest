@@ -21,7 +21,7 @@ import './commands'
 
 import { mount } from 'cypress/react18'
 
-import "../plugins/tailwind"
+import '../plugins/tailwind'
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.

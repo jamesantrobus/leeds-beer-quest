@@ -4,30 +4,30 @@ import { Venue } from '@/pages/api/venues'
 
 describe('<VenueDetails />', () => {
   const venue: Venue = {
-    name: "Test Pub",
-    description: "A test pub",
-    category: "Pub Reviews",
-    thumbnailUri: "https://leedsbeer.info/wp-content/uploads/2013/12/IMG_20131210_181816.jpg",
+    name: 'Test Pub',
+    description: 'A test pub',
+    category: 'Pub Reviews',
+    thumbnailUri: 'https://leedsbeer.info/wp-content/uploads/2013/12/IMG_20131210_181816.jpg',
     rating: {
       amenities: 1,
       atmosphere: 2,
       beer: 3,
-      value: 4
+      value: 4,
     },
     contact: {
-      phone: "012 345 678",
-      twitterUri: "testpub"
+      phone: '012 345 678',
+      twitterUri: 'testpub',
     },
     location: {
-      address: "Example Lane, LS1 4BR",
+      address: 'Example Lane, LS1 4BR',
       latitude: 53.7959633,
-      longitude: -1.5458804
-    }
+      longitude: -1.5458804,
+    },
   }
 
   it('renders the venue details', () => {
     cy.mount(<VenueDetails venue={venue} onClose={() => {}} />)
-    cy.get('[data-cy="image"]').should('have.css', 'background-image', `url("${venue.thumbnailUri}")`);
+    cy.get('[data-cy="image"]').should('have.css', 'background-image', `url("${venue.thumbnailUri}")`)
     cy.get('[data-cy="name"]').should('have.text', venue.name)
     cy.get('[data-cy="address"]').should('have.text', venue.location.address)
     cy.get('[data-cy="description"]').should('have.text', venue.description)
@@ -48,9 +48,9 @@ describe('<VenueDetails />', () => {
       ...venue,
       contact: {
         ...venue.contact,
-        phone: "",
+        phone: '',
       },
-    };
+    }
 
     cy.mount(<VenueDetails venue={venueWithoutPhone} onClose={() => {}} />)
     cy.get('[data-cy="phone-link"]').should('not.exist')
@@ -61,9 +61,9 @@ describe('<VenueDetails />', () => {
       ...venue,
       contact: {
         ...venue.contact,
-        twitterUri: "",
+        twitterUri: '',
       },
-    };
+    }
 
     cy.mount(<VenueDetails venue={venueWithoutTwitter} onClose={() => {}} />)
     cy.get('[data-cy="twitter-link"]').should('not.exist')
