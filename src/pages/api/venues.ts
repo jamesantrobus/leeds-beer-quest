@@ -38,8 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
   const parsedData = papa.parse(csvData, { header: true })
 
   // return a transformed list of venues
-  const openVenues = parsedData.data
-    .filter((row: any) => row.category !== "Closed venues")
+  const venues = parsedData.data
     .map((row: any) => ({
       name: row.name,
       category: row.category,
@@ -61,8 +60,10 @@ export default async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
         twitterUri: row.twitter ? `https://twitter.com/${row.twitter}` : ''
       }
   }) as Venue)
+  .filter((v: Venue) => v.category !== "Closed venues")
+  .filter((v: Venue) => req.query.category ? v.category === req.query.category : true)
+  .filter((v: Venue) => v.rating.value >= Number(req.query.minimumValueRating))
+  .sort((a, b) => b.rating.value - a.rating.value);
 
-  const sortedVenues = openVenues.sort((a, b) => b.rating.value - a.rating.value);
-
-  res.status(200).json(sortedVenues)
+  res.status(200).json(venues)
 }

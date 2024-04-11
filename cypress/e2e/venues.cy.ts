@@ -2,7 +2,7 @@
 
 describe('Venues', () => {
   beforeEach(() => {
-    cy.intercept('GET', '/api/venues').as('getVenuesRequest')
+    cy.intercept('GET', '/api/venues**').as('getVenuesRequest')
     
     cy.visit('http://localhost:3000')
     cy.wait('@getVenuesRequest')
