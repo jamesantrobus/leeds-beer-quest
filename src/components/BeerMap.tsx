@@ -53,9 +53,11 @@ const BeerMap: React.FC<BeerMapProps> = ({ venues = [], selectedVenue, onSelect 
         >
           <Image
             data-cy={`map-marker-${index}`}
-            className={`w-10 h-10 ${!selectedVenue || selectedVenue.name === venue.name ? 'opacity-100' : 'opacity-65'}`}
-            src="./map-marker.png"
+            className={`${!selectedVenue || selectedVenue.name === venue.name ? 'opacity-100' : 'opacity-65'}`}
+            src="/map-marker.png"
             alt={`Map marker for ${venue.name}`}
+            width={40}
+            height={40}
           />
         </Marker>
       ))}
