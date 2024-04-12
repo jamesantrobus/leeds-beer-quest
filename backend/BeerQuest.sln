@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Api", "BeerQuest.Api\BeerQuest.Api.csproj", "{6ABA4C7F-9EEE-4C22-BD56-08B529338B50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Infrastructure", "BeerQuest.Infrastructure\BeerQuest.Infrastructure.csproj", "{7BB9E7E4-123C-4096-9244-353391F9EB45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6ABA4C7F-9EEE-4C22-BD56-08B529338B50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABA4C7F-9EEE-4C22-BD56-08B529338B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABA4C7F-9EEE-4C22-BD56-08B529338B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABA4C7F-9EEE-4C22-BD56-08B529338B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BB9E7E4-123C-4096-9244-353391F9EB45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BB9E7E4-123C-4096-9244-353391F9EB45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BB9E7E4-123C-4096-9244-353391F9EB45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BB9E7E4-123C-4096-9244-353391F9EB45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
