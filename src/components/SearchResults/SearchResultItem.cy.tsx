@@ -8,6 +8,7 @@ describe('<SearchResultItem />', () => {
     atmosphere: 2,
     beer: 3,
     value: 4,
+    average: 2.5,
   }
 
   it('renders the venue details', () => {
@@ -22,7 +23,7 @@ describe('<SearchResultItem />', () => {
 
     cy.get('[data-cy="name"]').should('have.text', 'Test Pub Name')
     cy.get('[data-cy="description"]').should('have.text', 'Test Pub Description')
-    cy.get('[data-cy="star-rating"]').should('have.text', venueRating.value)
+    cy.get('[data-cy="star-rating"]').should('have.text', '2.50')
   })
 
   it('allows a venue to be selected', () => {

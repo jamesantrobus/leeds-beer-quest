@@ -23,7 +23,7 @@ const SearchResult: React.FC<SearchResultItemProps> = ({ name, description, rati
         <div className="flex flex-col w-10 justify-center items-center">
           <div>⭐️</div>
           <div className="text-sm font-bold text-blue-950" data-cy="star-rating">
-            {rating?.value}
+            {rating?.average.toFixed(2)}
           </div>
         </div>
 

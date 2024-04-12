@@ -65,6 +65,7 @@ const VenueDetails: React.FC<VenueDetailsProps> = ({ venue, onClose }) => {
           <RatingBar ratingCategory="Atmosphere" ratingValue={venue.rating.atmosphere} />
           <RatingBar ratingCategory="Amenities" ratingValue={venue.rating.amenities} />
           <RatingBar ratingCategory="Value" ratingValue={venue.rating.value} />
+          <RatingBar ratingCategory="Average" ratingValue={venue.rating.average} />
         </div>
 
         <div className="flex justify-evenly mb-1">

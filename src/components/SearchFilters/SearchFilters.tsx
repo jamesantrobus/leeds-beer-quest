@@ -3,7 +3,7 @@ import FilterDropdown, { FilterKeyValue } from '@/components/SearchFilters/Filte
 
 export type SearchParams = {
   category: string
-  minimumValueRating: number
+  minimumAverageRating: number
 }
 
 type SearchFilterProps = {
@@ -26,13 +26,13 @@ const ratingOptions: FilterKeyValue[] = [
 const SearchFilters: React.FC<SearchFilterProps> = ({ onChange }) => {
   const [searchParams, setSearchParams] = useState<SearchParams>({
     category: '',
-    minimumValueRating: 0,
+    minimumAverageRating: 0,
   })
 
   const onCategoryChange = async (newValue: string) => {
     const newSearchParams: SearchParams = {
       category: newValue,
-      minimumValueRating: searchParams.minimumValueRating,
+      minimumAverageRating: searchParams.minimumAverageRating,
     }
     setSearchParams(newSearchParams)
     onChange(newSearchParams)
@@ -41,7 +41,7 @@ const SearchFilters: React.FC<SearchFilterProps> = ({ onChange }) => {
   const onRatingChange = async (newValue: string) => {
     const newSearchParams: SearchParams = {
       category: searchParams.category,
-      minimumValueRating: Number(newValue),
+      minimumAverageRating: Number(newValue),
     }
     setSearchParams(newSearchParams)
     onChange(newSearchParams)
@@ -57,9 +57,9 @@ const SearchFilters: React.FC<SearchFilterProps> = ({ onChange }) => {
         onChange={(value) => onCategoryChange(value)}
       />
       <FilterDropdown
-        id="value-rating"
-        label="Value Rating"
-        value={searchParams.minimumValueRating}
+        id="average-rating"
+        label="Average Rating"
+        value={searchParams.minimumAverageRating}
         options={ratingOptions}
         onChange={(value) => onRatingChange(value)}
       />

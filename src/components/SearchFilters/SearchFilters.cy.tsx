@@ -9,7 +9,7 @@ describe('<SearchFilters />', () => {
     cy.get('[data-cy="category-filter"]').select('Pubs')
     cy.get('@onChange').should('have.been.calledOnceWith', {
       category: 'Pub reviews',
-      minimumValueRating: 0,
+      minimumAverageRating: 0,
     })
   })
 
@@ -17,10 +17,10 @@ describe('<SearchFilters />', () => {
     const onChangeSpy = cy.stub().as('onChange')
     cy.mount(<SearchFilters onChange={onChangeSpy} />)
 
-    cy.get('[data-cy="value-rating-filter"]').select('Over 4 stars')
+    cy.get('[data-cy="average-rating-filter"]').select('Over 4 stars')
     cy.get('@onChange').should('have.been.calledOnceWith', {
       category: '',
-      minimumValueRating: 4,
+      minimumAverageRating: 4,
     })
   })
 })

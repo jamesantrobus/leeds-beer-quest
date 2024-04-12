@@ -14,6 +14,7 @@ describe('<SearchResultList />', () => {
         atmosphere: 2,
         beer: 3,
         value: 4,
+        average: 2.5,
       },
       contact: {
         phone: '012 345 678',

@@ -14,7 +14,7 @@ describe('Venues', () => {
     cy.get('[data-cy="search-result"]').first().click()
 
     // check the correct venue is displayed
-    cy.get('[data-cy="venue-details"]').should('be.visible').should('contain.text', 'Tapped Brew Co.')
+    cy.get('[data-cy="venue-details"]').should('be.visible').should('contain.text', `Mr Foley's Cask Ale House`)
 
     // close the venue
     cy.get('[data-cy="close-link"]').click()
@@ -26,7 +26,7 @@ describe('Venues', () => {
     cy.get('[data-cy="map-marker-4"]').click({ force: true })
 
     // check the correct details are shown
-    cy.get('[data-cy="venue-details"]').should('be.visible').should('contain.text', 'The Angel Inn')
+    cy.get('[data-cy="venue-details"]').should('be.visible').should('contain.text', 'Bundobust')
 
     // close the venue
     cy.get('[data-cy="close-link"]').click()
@@ -42,20 +42,20 @@ describe('Venues', () => {
     cy.get('[data-cy="category-filter"]').select('Pubs')
     cy.wait('@getVenuesRequest').then((interception) => {
       const requestUrl = interception.request.url
-      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumValueRating=0')
+      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumAverageRating=0')
     })
 
     // further filter results to over 4 stars
-    cy.get('[data-cy="value-rating-filter"]').select('Over 4 stars')
+    cy.get('[data-cy="average-rating-filter"]').select('Over 4 stars')
     cy.wait('@getVenuesRequest').then((interception) => {
       const requestUrl = interception.request.url
-      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumValueRating=4')
+      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumAverageRating=4')
     })
 
     // check the list view is updated
-    cy.get('[data-cy="search-result"]').should('have.length', 21)
+    cy.get('[data-cy="search-result"]').should('have.length', 4)
 
     // check the map view is updated
-    cy.get('[aria-label="Map marker"]').should('have.length', 21)
+    cy.get('[aria-label="Map marker"]').should('have.length', 4)
   })
 })

@@ -13,6 +13,7 @@ describe('<VenueDetails />', () => {
       atmosphere: 2,
       beer: 3,
       value: 4,
+      average: 2.5,
     },
     contact: {
       phone: '012 345 678',
@@ -39,6 +40,8 @@ describe('<VenueDetails />', () => {
     cy.get('[data-cy="rating-Beer"] [data-cy="bar"]').should('have.attr', 'style', 'width: 60%;')
     cy.get('[data-cy="rating-Value"]').should('have.text', 'Value (4/5)')
     cy.get('[data-cy="rating-Value"] [data-cy="bar"]').should('have.attr', 'style', 'width: 80%;')
+    cy.get('[data-cy="rating-Average"]').should('have.text', 'Average (2.5/5)')
+    cy.get('[data-cy="rating-Average"] [data-cy="bar"]').should('have.attr', 'style', 'width: 50%;')
     cy.get('[data-cy="phone-link"]').should('have.attr', 'href', `tel:${venue.contact.phone}`)
     cy.get('[data-cy="twitter-link"]').should('have.attr', 'href', venue.contact.twitterUri)
   })

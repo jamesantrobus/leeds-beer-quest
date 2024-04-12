@@ -14,6 +14,7 @@ export type VenueRating = {
   atmosphere: number
   amenities: number
   value: number
+  average: number
 }
 
 export type VenueContact = {
@@ -56,6 +57,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
             atmosphere: Number(row.stars_atmosphere),
             amenities: Number(row.stars_amenities),
             value: Number(row.stars_value),
+            average:
+              (Number(row.stars_beer) +
+                Number(row.stars_atmosphere) +
+                Number(row.stars_amenities) +
+                Number(row.stars_value)) /
+              4,
           },
           contact: {
             phone: row.phone,
@@ -65,8 +72,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Venue[]>) => {
     )
     .filter((v: Venue) => v.category !== 'Closed venues')
     .filter((v: Venue) => (req.query.category ? v.category === req.query.category : true))
-    .filter((v: Venue) => v.rating.value >= Number(req.query.minimumValueRating))
-    .sort((a, b) => b.rating.value - a.rating.value)
+    .filter((v: Venue) => v.rating.average >= Number(req.query.minimumAverageRating))
+    .sort((a, b) => b.rating.average - a.rating.average)
 
   res.status(200).json(venues)
 }

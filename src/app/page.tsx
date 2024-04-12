@@ -13,14 +13,14 @@ export default function Home() {
 
   const fetchData = async (params: SearchParams) => {
     const response = await fetch(
-      `/api/venues?category=${params.category}&minimumValueRating=${params.minimumValueRating}`
+      `/api/venues?category=${params.category}&minimumAverageRating=${params.minimumAverageRating}`
     )
     const data: Venue[] = await response.json()
     setVenues(data)
   }
 
   useEffect(() => {
-    fetchData({ category: '', minimumValueRating: 0 })
+    fetchData({ category: '', minimumAverageRating: 0 })
   }, [])
 
   return (
