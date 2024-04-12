@@ -1,5 +1,5 @@
 import { Venue } from '@/pages/api/venues'
-import SearchResultItem from '@/components/SearchResultItem'
+import SearchResultItem from '@/components/SearchResults/SearchResultItem'
 
 type SearchResultListProps = {
   venues?: Venue[]

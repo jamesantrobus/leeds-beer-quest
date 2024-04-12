@@ -1,10 +1,10 @@
 'use client'
 
-import SearchResultList from '@/components/SearchResultList'
-import BeerMap from '@/components/BeerMap'
+import SearchResultList from '@/components/SearchResults/SearchResultList'
+import BeerMap from '@/components/BeerMap/BeerMap'
 import { useEffect, useState } from 'react'
 import { Venue } from '@/pages/api/venues'
-import VenueDetails from '@/components/VenueDetails'
+import VenueDetails from '@/components/VenueDetails/VenueDetails'
 import SearchFilters, { SearchParams } from '@/components/SearchFilters/SearchFilters'
 
 export default function Home() {
