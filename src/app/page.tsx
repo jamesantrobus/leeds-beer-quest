@@ -5,7 +5,7 @@ import BeerMap from '@/components/BeerMap'
 import { useEffect, useState } from 'react'
 import { Venue } from '@/pages/api/venues'
 import VenueDetails from '@/components/VenueDetails'
-import SearchFilters, { SearchParams } from '@/components/SearchFilters'
+import SearchFilters, { SearchParams } from '@/components/SearchFilters/SearchFilters'
 
 export default function Home() {
   const [venues, setVenues] = useState<Venue[]>()
