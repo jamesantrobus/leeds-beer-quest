@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Api", "BeerQuest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Infrastructure", "BeerQuest.Infrastructure\BeerQuest.Infrastructure.csproj", "{7BB9E7E4-123C-4096-9244-353391F9EB45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Domain", "BeerQuest.Domain\BeerQuest.Domain.csproj", "{FC1FC88B-F9B3-4D56-AA7F-9E2147951F25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{7BB9E7E4-123C-4096-9244-353391F9EB45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BB9E7E4-123C-4096-9244-353391F9EB45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BB9E7E4-123C-4096-9244-353391F9EB45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC1FC88B-F9B3-4D56-AA7F-9E2147951F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC1FC88B-F9B3-4D56-AA7F-9E2147951F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC1FC88B-F9B3-4D56-AA7F-9E2147951F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC1FC88B-F9B3-4D56-AA7F-9E2147951F25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
