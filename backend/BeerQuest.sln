@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Api", "BeerQuest.Api\BeerQuest.Api.csproj", "{6ABA4C7F-9EEE-4C22-BD56-08B529338B50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Api", "src\BeerQuest.Api\BeerQuest.Api.csproj", "{6ABA4C7F-9EEE-4C22-BD56-08B529338B50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Infrastructure", "BeerQuest.Infrastructure\BeerQuest.Infrastructure.csproj", "{7BB9E7E4-123C-4096-9244-353391F9EB45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Infrastructure", "src\BeerQuest.Infrastructure\BeerQuest.Infrastructure.csproj", "{7BB9E7E4-123C-4096-9244-353391F9EB45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Domain", "BeerQuest.Domain\BeerQuest.Domain.csproj", "{FC1FC88B-F9B3-4D56-AA7F-9E2147951F25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Domain", "src\BeerQuest.Domain\BeerQuest.Domain.csproj", "{FC1FC88B-F9B3-4D56-AA7F-9E2147951F25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Application.Services", "BeerQuest.Application.Services\BeerQuest.Application.Services.csproj", "{F20FFF39-BFA3-454B-B1B4-16368CC43982}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Application.Services", "src\BeerQuest.Application.Services\BeerQuest.Application.Services.csproj", "{F20FFF39-BFA3-454B-B1B4-16368CC43982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Application.Contracts", "BeerQuest.Application.Contracts\BeerQuest.Application.Contracts.csproj", "{5F390736-935F-4303-AA4A-9FFB7C151CBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerQuest.Application.Contracts", "src\BeerQuest.Application.Contracts\BeerQuest.Application.Contracts.csproj", "{5F390736-935F-4303-AA4A-9FFB7C151CBF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{558AAC32-1CD2-4D8A-A0BD-3C482793E71A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +38,12 @@ Global
 		{5F390736-935F-4303-AA4A-9FFB7C151CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F390736-935F-4303-AA4A-9FFB7C151CBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F390736-935F-4303-AA4A-9FFB7C151CBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6ABA4C7F-9EEE-4C22-BD56-08B529338B50} = {558AAC32-1CD2-4D8A-A0BD-3C482793E71A}
+		{5F390736-935F-4303-AA4A-9FFB7C151CBF} = {558AAC32-1CD2-4D8A-A0BD-3C482793E71A}
+		{F20FFF39-BFA3-454B-B1B4-16368CC43982} = {558AAC32-1CD2-4D8A-A0BD-3C482793E71A}
+		{FC1FC88B-F9B3-4D56-AA7F-9E2147951F25} = {558AAC32-1CD2-4D8A-A0BD-3C482793E71A}
+		{7BB9E7E4-123C-4096-9244-353391F9EB45} = {558AAC32-1CD2-4D8A-A0BD-3C482793E71A}
 	EndGlobalSection
 EndGlobal
