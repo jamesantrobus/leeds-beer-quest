@@ -13,6 +13,7 @@ builder.Services.AddDbContext(builder.Environment.ContentRootPath);
 builder.Services.AddMediatR(cfg => 
     cfg.RegisterServicesFromAssembly(typeof(GetVenuesHandler).Assembly));
 
+builder.Services.RegisterApplicationDependencies();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BeerQuest.Application.Contracts\BeerQuest.Application.Contracts.csproj" />
+      <ProjectReference Include="..\BeerQuest.Domain\BeerQuest.Domain.csproj" />
     </ItemGroup>
 
 </Project>
