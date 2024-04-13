@@ -27,6 +27,7 @@ public class EfContext(DbContextOptions<EfContext> options) : DbContext(options)
                 rating.Property(x => x.Atmosphere).HasPrecision(2, 1);
                 rating.Property(x => x.Amenities).HasPrecision(2, 1);
                 rating.Property(x => x.Value).HasPrecision(2, 1);
+                rating.Property(x => x.Average).HasPrecision(2, 1);
             });
             
             venue.OwnsOne(x => x.ContactDetails, contact =>
