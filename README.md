@@ -29,3 +29,10 @@ The app has three sets of tests:
 
 - Leeds Beer Quest [dataset](https://drive.google.com/file/d/1o5JTtFUHcBAjH47z4i_eZrFdyXvSzY_S/view).
 - Marker icons created by [André Luiz Gollo - Flaticon](https://www.flaticon.com/free-icons/marker).
+
+
+
+
+dotnet ef migrations add AddVenues --project BeerQuest.Infrastructure/BeerQuest.Infrastructure.csproj
+
+dotnet ef database update --project BeerQuest.Infrastructure/BeerQuest.Infrastructure.csproj
