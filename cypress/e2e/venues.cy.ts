@@ -2,7 +2,7 @@
 
 describe('Venues', () => {
   beforeEach(() => {
-    cy.intercept('GET', '/api/venues**').as('getVenuesRequest')
+    cy.intercept('GET', '**/venues**').as('getVenuesRequest')
 
     cy.visit('http://localhost:3000')
     cy.wait('@getVenuesRequest')
@@ -42,14 +42,14 @@ describe('Venues', () => {
     cy.get('[data-cy="category-filter"]').select('Pubs')
     cy.wait('@getVenuesRequest').then((interception) => {
       const requestUrl = interception.request.url
-      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumAverageRating=0')
+      expect(requestUrl).to.include('/venues?category=Pub%20reviews&minimumAverageRating=0')
     })
 
     // further filter results to over 4 stars
     cy.get('[data-cy="average-rating-filter"]').select('Over 4 stars')
     cy.wait('@getVenuesRequest').then((interception) => {
       const requestUrl = interception.request.url
-      expect(requestUrl).to.include('/api/venues?category=Pub%20reviews&minimumAverageRating=4')
+      expect(requestUrl).to.include('/venues?category=Pub%20reviews&minimumAverageRating=4')
     })
 
     // check the list view is updated

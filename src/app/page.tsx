@@ -3,7 +3,7 @@
 import SearchResultList from '@/components/SearchResults/SearchResultList'
 import BeerMap from '@/components/BeerMap/BeerMap'
 import { useEffect, useState } from 'react'
-import { Venue } from '@/pages/api/venues'
+import { GetVenuesResponse, Venue } from '@/pages/api/venues'
 import VenueDetails from '@/components/VenueDetails/VenueDetails'
 import SearchFilters, { SearchParams } from '@/components/SearchFilters/SearchFilters'
 
@@ -13,10 +13,10 @@ export default function Home() {
 
   const fetchData = async (params: SearchParams) => {
     const response = await fetch(
-      `/api/venues?category=${params.category}&minimumAverageRating=${params.minimumAverageRating}`
+      `${process.env.NEXT_PUBLIC_BEER_QUEST_API}/venues?category=${params.category}&minimumAverageRating=${params.minimumAverageRating}`
     )
-    const data: Venue[] = await response.json()
-    setVenues(data)
+    const data: GetVenuesResponse = await response.json()
+    setVenues(data.venues)
   }
 
   useEffect(() => {
