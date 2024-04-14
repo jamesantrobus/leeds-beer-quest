@@ -12,6 +12,9 @@ public class GetVenuesTests(WebTestFixture factory)
 {
     private readonly HttpClient _client = factory.CreateClient();
 
+    // NOTE: For demo purposes we're using the existing sqlite database and data for testing
+    // Spinning up a new database with seeded test data would be more desirable and robust
+    
     [Fact]
     public async Task DefaultQueryParamsReturnsAllVenues()
     {
