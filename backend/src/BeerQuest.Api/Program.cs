@@ -23,6 +23,11 @@ public class Program
         builder.Services.RegisterApplicationDependencies();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAllOriginsPolicy", b => b.AllowAnyOrigin());
+        });
 
         var app = builder.Build();
 
@@ -32,6 +37,8 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+        
+        app.UseCors("AllowAllOriginsPolicy");
         
         app.MapGet("/venues", (string? category, decimal? minimumAverageRating, IMediator mediator) 
                 => mediator.Send(new GetVenuesRequest(category, minimumAverageRating)))
