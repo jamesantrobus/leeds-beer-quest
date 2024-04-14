@@ -33,6 +33,7 @@ Once running browse to [http://localhost:3000](http://localhost:3000/).
 - Provide a [Mapbox](https://www.mapbox.com/) token in `.env` (for demo purposes this may have been provided to you).
 - Run the development server with `npm run dev` and browse to [http://localhost:3000](http://localhost:3000/).
 - Formatting is provided by prettier and can be ran with `npm run format`.
+- [Tailwind CSS](https://tailwindcss.com/) is used as a CSS framework.
 - Two types of tests are used:
     - Cypress Component tests to verify components in isolation and through specific scenarios. Run with `npm run cypress:run:component`.
     - Cypress end-to-end tests to mimick the user journey through the app. Run with `npm run cypress:run`. **Note:** The dev server must be running first and the Mapbox token must be set (see prerequisites).
