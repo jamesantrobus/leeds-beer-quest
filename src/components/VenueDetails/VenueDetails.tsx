@@ -1,4 +1,4 @@
-import { Venue, VenueRating } from '@/pages/api/venues'
+import { Venue } from '@/api/getVenues'
 
 type VenueDetailsProps = {
   venue: Venue

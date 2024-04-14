@@ -1,6 +1,6 @@
 import React from 'react'
 import VenueDetails from './VenueDetails'
-import { Venue } from '@/pages/api/venues'
+import { Venue } from '@/api/getVenues'
 
 describe('<VenueDetails />', () => {
   const venue: Venue = {

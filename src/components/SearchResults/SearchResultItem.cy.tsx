@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchResultItem from './SearchResultItem'
-import { VenueRating } from '@/pages/api/venues'
+import { VenueRating } from '@/api/getVenues'
 
 describe('<SearchResultItem />', () => {
   const venueRating: VenueRating = {

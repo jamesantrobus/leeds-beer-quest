@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchResultList from './SearchResultList'
-import { Venue } from '@/pages/api/venues'
+import { Venue } from '@/api/getVenues'
 
 describe('<SearchResultList />', () => {
   const buildTestVenue = () => {

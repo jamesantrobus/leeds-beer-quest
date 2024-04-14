@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Map, { Marker } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { Venue } from '@/pages/api/venues'
+import { Venue } from '@/api/getVenues'
 import Image from 'next/image'
 
 type BeerMapProps = {
