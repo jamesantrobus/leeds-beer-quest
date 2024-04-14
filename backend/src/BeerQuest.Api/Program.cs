@@ -43,6 +43,7 @@ public class Program
         app.MapGet("/venues", (string? category, decimal? minimumAverageRating, IMediator mediator) 
                 => mediator.Send(new GetVenuesRequest(category, minimumAverageRating)))
             .WithName("GetVenues")
+            .WithDescription("Returns a list of all venues, optionally filtered by category and average rating.")
             .WithOpenApi()
             .AddEndpointFilter<ExceptionFilter>();
 

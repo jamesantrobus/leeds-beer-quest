@@ -54,6 +54,8 @@ The DB is managed and accessed by EFCore which has a few useful commands:
 
 The backend is integration tested using XUnit and ASP.NET's `TestServer` to test the entire request pipeline, including filters and middleware. See `GetVenuesTests.cs` for an example. Run from VS or Rider, or with `dotnet test`.
 
+Swagger is used to provide API documentation. It can be viewed [here](http://localhost:5153/swagger/index.html) when the backend is running.
+
 ## Known Issues
 
 - For best results use a tablet or desktop. Support for mobile viewports hasn't been worked on.
