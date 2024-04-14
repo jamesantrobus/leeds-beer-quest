@@ -28,6 +28,20 @@ public class GetVenuesTests(WebTestFixture factory)
     }
     
     [Fact]
+    public async Task VenuesAreReturnedInDescendingOrderByAverageRating()
+    {
+        var response = await _client.GetAsync("/venues?minimumAverageRating=0");
+        response.EnsureSuccessStatusCode();
+        
+        var venuesResponse = await response.Content.ReadFromJsonAsync<GetVenuesResponse>();
+
+        // manually order the results to give us something to assert against
+        var expectedDescendingOrder = venuesResponse!.Venues.OrderByDescending(x => x.Rating.Average).ToList();
+        
+        Assert.Equal(expectedDescendingOrder, venuesResponse.Venues);
+    }
+    
+    [Fact]
     public async Task FiltersVenuesByCategoryAndRating()
     {
         var response = await _client.GetAsync("/venues?category=Pub reviews&minimumAverageRating=4");

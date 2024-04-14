@@ -15,7 +15,10 @@ public class GetVenuesHandler(IValidator<GetVenuesRequest> requestValidator, IVe
         await requestValidator.ValidateAndThrowAsync(request, cancellationToken: cancellationToken);
         
         var venues = await venueRepository.Search(request.Category, request.MinimumAverageRating);
-        var mappedVenues = venues.Select(MapToContract).ToList();
+        var mappedVenues = venues
+            .Select(MapToContract)
+            .OrderByDescending(x => x.Rating.Average) // sqlite doesn't support ordering of REAL types, so ordering in-memory here
+            .ToList();
 
         return new GetVenuesResponse(mappedVenues);
     }
