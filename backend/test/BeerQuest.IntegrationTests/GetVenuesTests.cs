@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using System.Net;
+using System.Net.Http.Json;
 using BeerQuest.Application.Contracts;
 using BeerQuest.Application.Contracts.Responses;
 using BeerQuest.IntegrationTests.Setup;
@@ -68,9 +69,14 @@ public class GetVenuesTests(WebTestFixture factory)
         Assert.Empty(exampleVenue.Contact.TwitterUri);
     }
 
-    [Fact]
-    public void TODO_Validation()
+    [Theory]
+    [InlineData("", -1.0)]            // rating out of range (low) 
+    [InlineData("", 6.0)]             // rating out of range (high)
+    [InlineData("Invalid cat", 0.0)]  // invalid category
+    public async Task ReturnsBadRequestWhenSearchParamsAreInvalid(string category, decimal minimumAverageRating)
     {
-        throw new NotImplementedException();
+        var response = await _client.GetAsync($"/venues?category={category}&minimumAverageRating={minimumAverageRating}");
+        
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
 }

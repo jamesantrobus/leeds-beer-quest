@@ -2,14 +2,18 @@ using BeerQuest.Application.Contracts;
 using BeerQuest.Application.Contracts.Requests;
 using BeerQuest.Application.Contracts.Responses;
 using BeerQuest.Domain.Repositories;
+using FluentValidation;
 using MediatR;
 
 namespace BeerQuest.Application.Services.Handlers;
 
-public class GetVenuesHandler(IVenueRepository venueRepository) : IRequestHandler<GetVenuesRequest, GetVenuesResponse>
+public class GetVenuesHandler(IValidator<GetVenuesRequest> requestValidator, IVenueRepository venueRepository) 
+    : IRequestHandler<GetVenuesRequest, GetVenuesResponse>
 {
     public async Task<GetVenuesResponse> Handle(GetVenuesRequest request, CancellationToken cancellationToken)
     {
+        await requestValidator.ValidateAndThrowAsync(request, cancellationToken: cancellationToken);
+        
         var venues = await venueRepository.Search(request.Category, request.MinimumAverageRating);
         var mappedVenues = venues.Select(MapToContract).ToList();
 

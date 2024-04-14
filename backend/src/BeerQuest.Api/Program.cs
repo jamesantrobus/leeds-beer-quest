@@ -1,3 +1,4 @@
+using BeerQuest.Api.Filters;
 using BeerQuest.Application.Contracts.Requests;
 using BeerQuest.Application.Services.Handlers;
 using BeerQuest.Infrastructure.Database;
@@ -31,11 +32,12 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-
+        
         app.MapGet("/venues", (string? category, decimal? minimumAverageRating, IMediator mediator) 
                 => mediator.Send(new GetVenuesRequest(category, minimumAverageRating)))
             .WithName("GetVenues")
-            .WithOpenApi();
+            .WithOpenApi()
+            .AddEndpointFilter<ExceptionFilter>();
 
         // migrate the database (for demo purposes, not recommended for prod)
         using (var scope = app.Services.CreateScope())

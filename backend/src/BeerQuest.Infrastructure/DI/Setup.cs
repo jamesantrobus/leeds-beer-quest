@@ -1,6 +1,8 @@
+using BeerQuest.Application.Services.Validators;
 using BeerQuest.Domain.Repositories;
 using BeerQuest.Infrastructure.Database;
 using BeerQuest.Infrastructure.Repositories;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,7 +21,7 @@ public static class Setup
     public static void RegisterApplicationDependencies(this IServiceCollection services)
     {
         // register validators
-        // services.AddValidatorsFromAssemblyContaining<TODO>();
+        services.AddValidatorsFromAssemblyContaining<GetVenuesRequestValidator>();
 
         // register infrastructure
         services.AddScoped<IVenueRepository, VenueRepository>();
