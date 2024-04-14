@@ -10,9 +10,11 @@ namespace BeerQuest.Infrastructure.DI;
 
 public static class Setup
 {
-    public static void AddDbContext(this IServiceCollection services, string contentRootPath)
+    public static void AddDbContext(this IServiceCollection services, string contentRootPath, string environmentName)
     {
-        var dbPath = Path.Join(contentRootPath, "..", "BeerQuest.Infrastructure", "Database", "beer.db");
+        var dbPath = environmentName == "Production"
+            ? Path.Join(contentRootPath, "Database", "beer.db")
+            : Path.Join(contentRootPath, "..", "BeerQuest.Infrastructure", "Database", "beer.db");
         
         services.AddDbContext<EfContext>(opt =>
             opt.UseSqlite($"Data Source={dbPath}"));

@@ -15,7 +15,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // setup DB
-        builder.Services.AddDbContext(builder.Environment.ContentRootPath);
+        builder.Services.AddDbContext(builder.Environment.ContentRootPath, builder.Environment.EnvironmentName);
 
         builder.Services.AddMediatR(cfg => 
             cfg.RegisterServicesFromAssembly(typeof(GetVenuesHandler).Assembly));
