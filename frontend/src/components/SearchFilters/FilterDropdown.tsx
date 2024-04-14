@@ -21,13 +21,11 @@ const FilterDropdown = ({ id, label, value, options, onChange }: FilterDropdownP
         id={id}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
       >
-        {options.map((o) => {
-          return (
-            <option key={`${id}-${o.value}`} value={o.value}>
-              {o.label}
-            </option>
-          )
-        })}
+        {options.map((o) => (
+          <option key={`${id}-${o.value}`} value={o.value}>
+            {o.label}
+          </option>
+        ))}
       </select>
     </div>
   )

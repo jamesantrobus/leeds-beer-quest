@@ -31,18 +31,20 @@ const SearchFilters: React.FC<SearchFilterProps> = ({ onChange }) => {
 
   const onCategoryChange = async (newValue: string) => {
     const newSearchParams: SearchParams = {
+      ...searchParams,
       category: newValue,
-      minimumAverageRating: searchParams.minimumAverageRating,
     }
+
     setSearchParams(newSearchParams)
     onChange(newSearchParams)
   }
 
   const onRatingChange = async (newValue: string) => {
     const newSearchParams: SearchParams = {
-      category: searchParams.category,
+      ...searchParams,
       minimumAverageRating: Number(newValue),
     }
+
     setSearchParams(newSearchParams)
     onChange(newSearchParams)
   }

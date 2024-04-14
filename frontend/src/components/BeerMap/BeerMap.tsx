@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Map, { Marker } from 'react-map-gl'
+import Map, { MapProps, Marker } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { Venue } from '@/api/getVenues'
 import Image from 'next/image'
@@ -12,7 +12,7 @@ type BeerMapProps = {
   onSelect: (venue: Venue) => void
 }
 
-const defaultState = {
+const defaultState: Pick<MapProps, 'longitude' | 'latitude' | 'zoom'> = {
   longitude: -1.5448842044972366,
   latitude: 53.797900782787224,
   zoom: 14,

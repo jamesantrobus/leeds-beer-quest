@@ -6,6 +6,7 @@ type VenueDetailsProps = {
 }
 
 type RatingBarProps = { ratingCategory: string; ratingValue: number }
+
 const RatingBar = ({ ratingCategory, ratingValue }: RatingBarProps) => {
   return (
     <dd className="flex flex-col mb-2" data-cy={`rating-${ratingCategory}`}>
